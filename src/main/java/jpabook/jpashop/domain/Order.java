@@ -27,10 +27,10 @@ public class Order {
     @JoinColumn(name = "member_id") // Mapping 을 뭘로 할 것인가? (FK 이름)
     private Member member;
 
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     // 컬렉션을 필드에서 초기화 하는것이 안전하다 !
     // 1. null 문제에서 안전
     // 2. 하이버네이트 메커니즘에 문제가 발생할 수 있다.
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
