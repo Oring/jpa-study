@@ -1,0 +1,24 @@
+# 설정을 배우는 법...?
+# spring 매뉴얼 : https://spring.io/projects/spring-boot#learn
+spring:
+#  datasource:
+#    url: jdbc:h2:mem:test # 메모리 모드로 동작 : https://h2database.com/html/cheatSheet.html
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver  # 데이터베이스 커넥션과 관련된 데이터소스 설정
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#      # 자동으로 테이블을 만들어주는 모드
+#      # 애플리케이션 실행 시점에 내가 가지고 있는 테이블들을 다 지우고
+#      # 내가 가지고 있는 entity 정보를 보고 다 지운 다음에 다시 생성함
+#    properties:
+#      hibernate:  # hibernate 와 관련된 특정한 property 들을 쓸 수가 있음
+#        #show_sql: true  # System.out 을 통해서 출력
+#        format_sql: true
+
+logging:
+  level:
+    org.hibernate.sql: debug  # logger 를 통해서 출력
+    org.hibernate.type: trace
