@@ -8,6 +8,7 @@ import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import jpabook.jpashop.repository.MemberRepository;
 import jpabook.jpashop.repository.OrderRepository;
+import jpabook.jpashop.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +26,9 @@ public class OrderService {
 
     /**
      * 주문
+     * 외부(Controller level)에서는 식별자만 파라미터로 넘기는 것이 좋다. (핵심 비지니스 로직이 있는 경우)
+     * 엔티티를 찾는 것 부터 여기서(@Transactional 안에서) 다 한다.
+     * 그래야 영속 상태로 진행이 된다. 그래야 더티 체킹이 된다.
      */
     @Transactional
     public Long order(Long memberId, Long itemId, int count) {
@@ -61,7 +65,7 @@ public class OrderService {
     }
 
     //검색
-//    public List<Order> findOrder(OrderSearch orderSearch) {
-//        return orderRepository.findAll(orderSearch);
-//    }
+    public List<Order> findOrder(OrderSearch orderSearch) {
+        return orderRepository.findAllByString(orderSearch);
+    }
 }
